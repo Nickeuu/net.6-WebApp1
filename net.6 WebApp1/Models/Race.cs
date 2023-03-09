@@ -4,7 +4,7 @@ using net._6_WebApp1.Data.Enum;
 
 namespace net._6_WebApp1.Models
 {
-    public class Races
+    public class Race
     {
         [Key]
         public int Id { get; set; }
