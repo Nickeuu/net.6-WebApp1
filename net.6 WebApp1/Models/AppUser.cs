@@ -1,7 +1,11 @@
-﻿namespace net._6_WebApp1.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace net._6_WebApp1.Models
 {
     public class AppUser
     {
+        [Key]
+        public string Id { get; set; }
         public int? Pace { get; set; }
         public int? Mileage { get; set; }
         public Address? Address { get; set; }
