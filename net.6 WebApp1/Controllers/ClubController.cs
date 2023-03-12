@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using net._6_WebApp1.Data;
 using net._6_WebApp1.Models;
 
@@ -19,7 +20,7 @@ namespace net._6_WebApp1.Controllers
         }
         public IActionResult Detail(int id)
         {
-            Club club = _context.Clubs.FirstOrDefault(c => c.Id == id);
+            Club club = _context.Clubs.Include(a => a.Address).FirstOrDefault(c => c.Id == id);
             return View(club);
         }
     }
