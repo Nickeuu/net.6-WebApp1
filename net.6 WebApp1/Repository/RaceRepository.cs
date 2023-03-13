@@ -5,7 +5,7 @@ using net._6_WebApp1.Models;
 
 namespace net._6_WebApp1.Repository
 {
-    public class RaceRepository
+    public class RaceRepository : IRaceRepository
     {
         private readonly ApplicationDbContext _context;
 
