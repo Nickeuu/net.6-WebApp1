@@ -11,7 +11,5 @@ namespace net._6_WebApp1.Repository.Interfaces
         bool Update(Club club);
         bool Delete(Club club);
         bool Save();
-
-
     }
 }
