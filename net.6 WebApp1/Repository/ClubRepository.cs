@@ -2,7 +2,6 @@
 using net._6_WebApp1.Data;
 using net._6_WebApp1.Interfaces;
 using net._6_WebApp1.Models;
-using System.Diagnostics;
 
 namespace net._6_WebApp1.Repository
 {
