@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using net._6_WebApp1.Data;
 using net._6_WebApp1.Interfaces;
 using net._6_WebApp1.Models;
 
@@ -12,7 +10,7 @@ namespace net._6_WebApp1.Controllers
 
         public RaceController(IRaceRepository raceRepository)
         {
-            _raceRepository = raceRepository;   
+            _raceRepository = raceRepository;
         }
         public async Task<IActionResult> Index()
         {
