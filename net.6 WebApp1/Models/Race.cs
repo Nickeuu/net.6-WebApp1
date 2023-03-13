@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using net._6_WebApp1.Data.Enum;
 using System.ComponentModel.DataAnnotations;
-using net._6_WebApp1.Data.Enum;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace net._6_WebApp1.Models
 {

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using net._6_WebApp1.Data.Enum;
+﻿using net._6_WebApp1.Data.Enum;
 using net._6_WebApp1.Models;
 
 namespace net._6_WebApp1.Data
