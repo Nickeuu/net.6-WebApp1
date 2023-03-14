@@ -32,7 +32,7 @@ namespace net._6_WebApp1.Repository
 
         public async Task<Race> GetByIdAsync(int id)
         {
-            return await _context.Races.FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.Races.Include(i => i.Address).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<IEnumerable<Race>> GetAllRacesByCity(string city)
