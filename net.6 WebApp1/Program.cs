@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using net._6_WebApp1.Data;
+using net._6_WebApp1.Helpers;
 using net._6_WebApp1.Interfaces;
 using net._6_WebApp1.Repository;
 
@@ -9,8 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
 builder.Services.AddScoped<IRaceRepository, RaceRepository>();
-
-
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
