@@ -3,7 +3,7 @@ using net._6_WebApp1.Models;
 
 namespace net._6_WebApp1.ViewModels
 {
-    internal class EditRaceViewModel
+    public class EditRaceViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
