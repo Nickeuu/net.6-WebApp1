@@ -9,23 +9,26 @@ namespace net._6_WebApp1.Controllers
 {
     public class RaceController : Controller
     {
-        private readonly IRaceRepository _raceRespository;
+        private readonly IRaceRepository _raceRepository;
         private readonly IPhotoService _photoService;
-        public RaceController(IRaceRepository raceRespository, IPhotoService photoService)
+
+        public RaceController(IRaceRepository raceRepository, IPhotoService photoService)
         {
-            _raceRespository = raceRespository;
+            _raceRepository = raceRepository;
             _photoService = photoService;
         }
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Race> races = await _raceRespository.GetAll();
+            IEnumerable<Race> races = await _raceRepository.GetAll();
             return View(races);
         }
+
         public async Task<IActionResult> Detail(int id)
         {
-            Race race = await _raceRespository.GetByIdAsync(id);
+            Race race = await _raceRepository.GetByIdAsync(id);
             return View(race);
         }
+
         public IActionResult Create()
         {
             return View();
@@ -48,20 +51,19 @@ namespace net._6_WebApp1.Controllers
                         State = raceVM.Address.State,
                     }
                 };
-                _raceRespository.Add(race);
+                _raceRepository.Add(race);
                 return RedirectToAction("Index");
             }
             else
             {
                 ModelState.AddModelError("", "Photo upload failed");
             }
-
             return View(raceVM);
         }
 
         public async Task<IActionResult> Edit(int id)
         {
-            var race = await _raceRespository.GetByIdAsync(id);
+            var race = await _raceRepository.GetByIdAsync(id);
             if (race == null) return View("Error");
             var clubVM = new EditRaceViewModel
             {
@@ -74,7 +76,6 @@ namespace net._6_WebApp1.Controllers
             };
             return View(clubVM);
         }
-
         [HttpPost]
         public async Task<IActionResult> Edit(int id, EditRaceViewModel raceVM)
         {
@@ -84,7 +85,7 @@ namespace net._6_WebApp1.Controllers
                 return View("Edit", raceVM);
             }
 
-            var userRace = await _raceRespository.GetByIdAsyncNoTracking(id);
+            var userRace = await _raceRepository.GetByIdAsyncNoTracking(id);
 
             if (userRace != null)
             {
@@ -98,8 +99,6 @@ namespace net._6_WebApp1.Controllers
                     return View(raceVM);
                 }
                 var photoResult = await _photoService.AddPhotoAsync(raceVM.Image);
-
-
                 var race = new Race
                 {
                     Id = id,
@@ -110,7 +109,7 @@ namespace net._6_WebApp1.Controllers
                     Address = raceVM.Address,
                 };
 
-                _raceRespository.Update(race);
+                _raceRepository.Update(race);
 
                 return RedirectToAction("Index");
             }
@@ -118,8 +117,23 @@ namespace net._6_WebApp1.Controllers
             {
                 return View(raceVM);
             }
+        }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            var clubDetails = await _raceRepository.GetByIdAsync(id);
+            if (clubDetails == null) return View("Error");
+            return View(clubDetails);
+        }
 
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteClub(int id)
+        {
+            var raceDetails = await _raceRepository.GetByIdAsync(id);
+            if (raceDetails == null) return View("Error");
+
+            _raceRepository.Delete(raceDetails);
+            return RedirectToAction("Index");
         }
     }
 }
