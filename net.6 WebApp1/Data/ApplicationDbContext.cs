@@ -4,7 +4,7 @@ using net._6_WebApp1.Models;
 
 namespace net._6_WebApp1.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<AppUser>
+    public class ApplicationDbContext : IdentityDbContext<AppUser> /*DbContext*/
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
