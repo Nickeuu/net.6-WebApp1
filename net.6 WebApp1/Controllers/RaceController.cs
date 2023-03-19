@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using net._6_WebApp1.Interfaces;
 using net._6_WebApp1.Models;
-using net._6_WebApp1.Repository;
-using net._6_WebApp1.Services;
 using net._6_WebApp1.ViewModels;
 
 namespace net._6_WebApp1.Controllers
