@@ -1,4 +1,5 @@
-﻿using net._6_WebApp1.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using net._6_WebApp1.Data;
 using net._6_WebApp1.Interfaces;
 using net._6_WebApp1.Models;
 
@@ -26,6 +27,10 @@ namespace net._6_WebApp1.Repository
             var curUser = _httpContextAccessor.HttpContext?.User;
             var userRaces = _context.Races.Where(r => r.AppUser.Id == curUser.GetUserId());
             return userRaces.ToList();
+        }
+        public async Task<AppUser> GetUserById(string id)
+        {
+            return await _context.Users.FindAsync(id);
         }
     }
 }

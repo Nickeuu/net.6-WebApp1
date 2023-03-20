@@ -6,5 +6,6 @@ namespace net._6_WebApp1.Interfaces
     {
         Task<List<Race>> GetAllUserRaces();
         Task<List<Club>> GetAllUserClubs();
+        Task<AppUser> GetUserById(string id);
     }
 }
