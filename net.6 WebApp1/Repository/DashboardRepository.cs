@@ -4,12 +4,12 @@ using net._6_WebApp1.Models;
 
 namespace net._6_WebApp1.Repository
 {
-    public class DashboadrRepository : IDashboardRepository
+    public class DashboardRepository : IDashboardRepository
     {
         private readonly ApplicationDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public DashboadrRepository(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+        public DashboardRepository(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
